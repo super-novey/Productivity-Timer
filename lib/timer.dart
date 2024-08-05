@@ -4,9 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import './timermodel.dart';
 
 class CountDownTimer {
-  double _radius = 1;
-  bool _isActive = true;
-  late TimerModel timer;
+  double _radius = 1; // express the percentage of completed time
+  bool _isActive = true; // true if the counter is active
+  //late TimerModel timer; // 
   late Duration _time;
   late Duration _fullTime;
   int work = 30;
@@ -55,7 +55,8 @@ class CountDownTimer {
     }
   }
 
-  void startBreak(bool isShort) {
+  void startBreak(bool isShort) async {
+    await readSettings(); 
     _radius = 1;
     _time = Duration(minutes: (isShort) ? shortBreak : longBreak, seconds: 0);
     _fullTime = _time;
