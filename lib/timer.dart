@@ -6,7 +6,7 @@ import './timermodel.dart';
 class CountDownTimer {
   double _radius = 1; // express the percentage of completed time
   bool _isActive = true; // true if the counter is active
-  //late TimerModel timer; // 
+  //late TimerModel timer; //
   late Duration _time;
   late Duration _fullTime;
   int work = 30;
@@ -24,7 +24,7 @@ class CountDownTimer {
   }
 
   Stream<TimerModel> stream() async* {
-    yield* Stream.periodic(const Duration(seconds: 1), (int a) {
+    yield* Stream.periodic(const Duration(seconds: 1), (_) {
       String time;
       if (_isActive) {
         _time = _time - const Duration(seconds: 1);
@@ -56,7 +56,7 @@ class CountDownTimer {
   }
 
   void startBreak(bool isShort) async {
-    await readSettings(); 
+    await readSettings();
     _radius = 1;
     _time = Duration(minutes: (isShort) ? shortBreak : longBreak, seconds: 0);
     _fullTime = _time;

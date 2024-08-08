@@ -132,15 +132,18 @@ class _SettingsState extends State<Settings> {
     prefs = await SharedPreferences.getInstance();
     int? workTime = prefs.getInt(WORKTIME);
     if (workTime == null) {
-      await prefs.setInt(WORKTIME, int.parse('30'));
+      workTime = 30;
+      prefs.setInt(WORKTIME, workTime);
     }
     int? shortBreak = prefs.getInt(SHORTBREAK);
     if (shortBreak == null) {
-      await prefs.setInt(SHORTBREAK, int.parse('5'));
+      shortBreak = 5;
+      prefs.setInt(SHORTBREAK, shortBreak);
     }
     int? longBreak = prefs.getInt(LONGBREAK);
     if (longBreak == null) {
-      await prefs.setInt(LONGBREAK, int.parse('20'));
+      longBreak = 20;
+      prefs.setInt(LONGBREAK, longBreak);
     }
     setState(() {
       txtWork.text = workTime.toString();
